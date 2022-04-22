@@ -13,6 +13,9 @@ const main = document.querySelector('.main-wrapper');
 const BOMBS_NUMBER = 16;
 document.querySelector('button').addEventListener('click', play);
 let bombs = [];
+let arrayNumeri = [];
+
+
 
 function play(){
 
@@ -22,17 +25,14 @@ function play(){
     const gridLevels = [100,81,49];
     const cellNumbers = gridLevels[userChoice];
     
-
-
     generatPlayground(cellNumbers);
-
+    
+    
 }
 
 function reset(){
     main.innerHTML = "";
 }
-
-
 
 function generatPlayground(cellNumbers){
 
@@ -88,9 +88,15 @@ function handleClickCell(){
         this.classList.add('bomb')
     }else{
         this.classList.add('clicked')
+        arrayNumeri.push(this.myNumber)
+        console.log(arrayNumeri);
     }
-    console.log(this.myNumber); 
+    
 }
 
+function endGame(){
 
+ 
+
+}
 

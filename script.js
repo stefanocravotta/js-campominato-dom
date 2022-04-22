@@ -12,6 +12,7 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 const main = document.querySelector('.main-wrapper');
 const BOMBS_NUMBER = 16;
 document.querySelector('button').addEventListener('click', play);
+let bombs = [];
 
 function play(){
 
@@ -20,12 +21,8 @@ function play(){
     const userChoice = document.getElementById('choice').value;
     const gridLevels = [100,81,49];
     const cellNumbers = gridLevels[userChoice];
-    const bombs = generateBombs(cellNumbers);
-    console.log(bombs);
-    
     
 
-    
 
     generatPlayground(cellNumbers);
 
@@ -41,7 +38,8 @@ function generatPlayground(cellNumbers){
 
     const grid =document.createElement('div');
     grid.className = 'sc-container';
-
+    bombs = generateBombs(cellNumbers);
+    console.log(bombs);
     for( let i = 1; i <= cellNumbers; i++){
 
         const cell = generateCell(i,cellNumbers);
@@ -84,42 +82,15 @@ function getRandomNumber(min, max){
   
 }
 
-/* function generaArrayNumeri(){
-
-    const numeriScelti = [];
-    for(let i = 0; i < numeriScelti; i++){
-        numeriScelti.push(myNumber)
-    }
-
-    return numeriScelti;
-} */
-
 function handleClickCell(){
-
-    const myNumber = parseInt(this.myNumber);
-    let numeriScelti = [];
-    console.log(numeriScelti);
-
-    numeriScelti.push(myNumber);
     
-        
-   
-    console.log(numeriScelti);
-    //verificare che il numero scelto non sia nel arraybombe
-   
-    /* this.classList.add('bomb'); */
-
-    this.classList.add('clicked'); 
-    
-    
-    
-}
-
-function prova(myNumber,bombs){
-
-    if(myNumber === bombs){
-        console.log("boom");
+    if(bombs.includes(this.myNumber)){
+        this.classList.add('bomb')
+    }else{
+        this.classList.add('clicked')
     }
+    console.log(this.myNumber); 
 }
+
 
 
